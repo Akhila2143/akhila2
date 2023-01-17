@@ -1,0 +1,59 @@
+import nltk
+from nltk.tokenize import  word_tokenize
+from nltk.probability import ConditionalFreqDist
+import matplotlib.pyplot as plt
+nltk.download('punkt')
+
+sentence="this a sampe sentence. It contais 12 numericals and punctionss! "
+
+tokens=nltk.word_tokenize(sentence)
+print(tokens)
+
+
+sentence=nltk.FreqDist(tokens)
+
+print(sentence)
+
+
+sentence.most_common(12)
+
+
+fig,ax=plt.subplots(figsize=(10,5))
+sentence.plot()
+
+fig,ax=plt.subplots(figsize=(10,5))
+sentence.plot()
+fig,ax=plt.subplots(figsize=(10,5))
+sentence.plot()
+fig,ax=plt.subplots(figsize=(10,5))
+sentence.plot()
+
+fig,ax=plt.subplots(figsize=(10,5))
+sentence.plot()
+
+
+from spellchecker import SpellChecker
+spell=SpellChecker()
+miss=spell.unknown(tokens)
+for word in tokens:
+  print(spell.correction(word))  
+
+from PIL import Image
+
+from wordcloud import WordCloud,STOPWORDS
+stop_w=set(STOPWORDS)
+info="this is a Sentence sample"
+word_c=WordCloud(stopwords=stop_w).generate(info)
+
+
+img=word_c.to_image()
+img.show()
+
+
+
+
+
+
+
+
+
